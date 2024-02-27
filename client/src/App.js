@@ -28,15 +28,17 @@ function App() {
 
   return (
     <Router>
-      <div className="background">
+      <div className="container">
         <Header loggedIn={loggedIn} />
-        <Routes>
-          <Route exact path="/" element={<Home user={user} />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<SignUp />} />
-          <Route exact path="/account" element={<Account />} />
-          <Route exact path="/about" element={<About />} />
-        </Routes>
+        <div className="content">
+          <Routes>
+            <Route exact path="/" element={<Home user={user} />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<SignUp />} />
+            <Route exact path="/account" element={<Account />} />
+            <Route exact path="/about" element={<About />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
