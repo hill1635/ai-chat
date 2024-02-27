@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import API from "../../utils/UserAPI";
 import "./Home.scss";
+import Chat from "../../components/chat/Chat";
 
 function Home(props) {
 
@@ -9,11 +10,8 @@ function Home(props) {
   }, [ props.user ]);
 
   return (
-    <main>
-      <div className="wrapper">
-        <h1>Welcome to the homepage!</h1>
-        <p>Get started here to for the first impression.</p>
-      </div>
+    <main className="home">
+        <Chat />
     </main>
   );
 }
