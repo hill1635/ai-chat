@@ -37,7 +37,6 @@ function App() {
           <Route exact path="/account" element={<Account />} />
           <Route exact path="/about" element={<About />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );
