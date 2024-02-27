@@ -26,24 +26,16 @@ function App() {
 //   });
 // }, []);
 
-  const routes = {
-    home: "/",
-    login: "/login",
-    signup: "/signup",
-    account: "/account",
-    about: "/about"
-  };
-
   return (
     <Router>
       <div className="background">
-        <Header loggedIn={loggedIn} routes={routes} />
+        <Header loggedIn={loggedIn} />
         <Routes>
-          <Route exact path={routes.home} element={<Home user={user} />} />
-          <Route exact path={routes.login} element={<Login />} />
-          <Route exact path={routes.signup} element={<SignUp />} />
-          <Route exact path={routes.account} element={<Account />} />
-          <Route exact path={routes.about} element={<About />} />
+          <Route exact path="/" element={<Home user={user} />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/account" element={<Account />} />
+          <Route exact path="/about" element={<About />} />
         </Routes>
         <Footer />
       </div>
