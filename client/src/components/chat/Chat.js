@@ -12,10 +12,6 @@ function Chat() {
         setMessages([...messages, { text: userResponse, user: "user", index: messages.length + 1 }]);
     }, [userResponse]);
 
-    useEffect(() => {
-        console.log("messages:", messages);
-    }, [messages]);
-
     return(
         <div className="chat">
             <Log messages={messages}/>
