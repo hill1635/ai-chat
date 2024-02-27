@@ -3,12 +3,12 @@ import "./Header.scss";
 import Navigation from "../components/navigation/Navigation";
 import SearchBar from "../components/search/SearchBar";
 
-function Header() {
+function Header(props) {
     return (
         <header>
             <img alt="Logo" src="#"/>
             <SearchBar />
-            <Navigation />
+            <Navigation links={props.routes} />
         </header>
     );
 }
