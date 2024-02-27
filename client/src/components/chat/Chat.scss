@@ -1,3 +1,6 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .chat {
     height: 100%;
     width: 100%;
@@ -17,4 +20,16 @@
 
 .sendBtn {
     padding: 15px;
+}
+
+.messageLog {
+    @include flex-column;
+}
+
+.user {
+    float: right;
+}
+
+.other {
+    float: left;
 }
