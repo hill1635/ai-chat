@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import Log from "./Log";
 import "./Chat.scss";
+import { set } from "mongoose";
 
 function Chat() {
-    const messages = [
-        { text: "Hello", user: "user1", index: 1 },
-        { text: "Hi", user: "user2", index: 2 },
-        { text: "How are you?", user: "user1", index: 3 },
-    ];
+    const [ messages, setMessages ] = useState([]);
+    const [ userResponse, setUserResponse ] = useState("");
+
+    useEffect(() => {
+        setMessages([...messages, { text: userResponse, user: "user", index: messages.length + 1 }]);
+    }, [userResponse]);
+
+    useEffect(() => {
+        console.log("messages:", messages);
+    }, [messages]);
 
     return(
         <div className="chat">
             <Log messages={messages}/>
-            <Input />
+            <Input setUserResponse={setUserResponse}/>
         </div>
     );
 }
