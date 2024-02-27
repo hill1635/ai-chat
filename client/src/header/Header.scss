@@ -1,2 +1,12 @@
 @import "../styles/variables";
 @import "../styles/mixins";
+
+header, nav{
+    @include flex-column;
+    align-items: center;
+}
+
+nav {
+    @include center-around;
+    height: 50%;
+}
