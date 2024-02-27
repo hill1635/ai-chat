@@ -6,7 +6,7 @@ function Message(props) {
     const [ messenger, setMessenger ] = useState("");
     
     useEffect(() => {
-        if (props.message.user === "user1") {
+        if (props.message.user === "user") {
             setMessenger("user");
         } else {
             setMessenger("other");
