@@ -1,7 +1,8 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
-.wrapper {
+.home {
     @include flex-column;
-    @include center-around;
+    @include center-between;
+    flex: 1 0 100%;
 }
