@@ -4,7 +4,6 @@ import API from "../../utils/UserAPI";
 function Search(props) {
     var search = (e) => {
         e.preventDefault();
-        console.log("submit: ", props.search);
     }
 
     return (

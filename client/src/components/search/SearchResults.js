@@ -8,13 +8,11 @@ function SearchResults(props) {
     useEffect(() => {
         if (props.results !== undefined) {
             setResults(props.results);
-            console.log(props.results);
         }
     }, [props.results]);
 
     const select = (e, result) => {
         e.preventDefault();
-        console.log("result", result);
     }
 
     return (

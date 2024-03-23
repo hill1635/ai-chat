@@ -23,7 +23,6 @@ function Chat() {
     useEffect(() => {
         if (userResponse !== "") {
             setMessages([...messages, { text: userResponse, user: "user", index: messages.length + 1 }]);
-            console.log("userResponse:", userResponse);
             aiRun(userResponse);
         }
     }, [userResponse]);
@@ -31,12 +30,10 @@ function Chat() {
     useEffect(() => {
         if (aiResponse !== "") {
             setMessages([...messages, { text: aiResponse, user: "ai", index: messages.length + 1 }]);
-            console.log("aiResponse:", aiResponse);
         }
     }, [aiResponse]);
 
     useEffect(() => {
-        console.log('messages:', messages);
     }, [messages]);
 
     return(
