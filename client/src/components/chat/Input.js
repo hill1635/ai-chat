@@ -4,6 +4,7 @@ function Input(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.setUserResponse(e.target.previousSibling.value);
+        e.target.previousSibling.value = "";
     }
 
     return (
