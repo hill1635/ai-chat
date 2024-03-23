@@ -1,8 +1,2 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
-
-.home {
-    @include flex-column;
-    @include center-between;
-    flex: 1 0 100%;
-}

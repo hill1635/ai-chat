@@ -7,7 +7,7 @@ function Log(props) {
         <div className="messageLog">
             {props.messages.map((message) => {
                 return <Message key={message.index} message={message} />
-            })};
+            })}
         </div>
     );
 }

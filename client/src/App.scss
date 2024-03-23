@@ -1,16 +1,2 @@
 @import "./styles/variables";
 @import "./styles/mixins";
-
-#root {
-  height: 100vh;
-}
-
-.container {
-  @include flex-row;
-  height: 100%;
-}
-
-.content {
-  @include flex-column;
-  flex: auto;
-}

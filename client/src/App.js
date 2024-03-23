@@ -13,32 +13,30 @@ import "./App.scss";
 import "./components/buttons/Buttons.scss";
 
 function App() {
-  const [ loggedIn, setLoggedIn ] = useState(false);
-  const [ user, setUser ] = useState({});
-  
-// useEffect(() => {
-//   API.checkSession()
-//   .then((res) => {
-//     if (res.data[0] !== undefined) {
-//       setUser(res.data[0]);
-//       setLoggedIn(true);
-//     }
-//   });
-// }, []);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
+
+  // useEffect(() => {
+  //   API.checkSession()
+  //   .then((res) => {
+  //     if (res.data[0] !== undefined) {
+  //       setUser(res.data[0]);
+  //       setLoggedIn(true);
+  //     }
+  //   });
+  // }, []);
 
   return (
     <Router>
       <div className="container">
         <Header loggedIn={loggedIn} />
-        <div className="content">
-          <Routes>
-            <Route exact path="/" element={<Home user={user} />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/signup" element={<SignUp />} />
-            <Route exact path="/account" element={<Account />} />
-            <Route exact path="/about" element={<About />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route exact path="/" element={<Home user={user} />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/account" element={<Account />} />
+          <Route exact path="/about" element={<About />} />
+        </Routes>
       </div>
     </Router>
   );
