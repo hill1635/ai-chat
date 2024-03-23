@@ -4,7 +4,7 @@ import Message from "./Message.js";
 function Log(props) {
 
     return(
-        <div className="messageLog">
+        <div className="log">
             {props.messages.map((message) => {
                 return <Message key={message.index} message={message} />
             })}

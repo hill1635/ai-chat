@@ -1,2 +1,23 @@
 @import "../styles/variables";
 @import "../styles/mixins";
+
+header {
+    @include flex(column, nowrap);
+    @include align(start, center);
+    flex: 0 1 25%;
+    gap: 50px;
+    padding: 25px;
+    background-color: $bg-primary;
+}
+
+header nav {
+    @include flex(column, nowrap);
+    @include align(start, center);
+    flex: 0 0 50%;
+    gap: 50px;
+}
+
+.headerLogo {
+    max-height: 100px;
+    max-width: 100px;
+}

@@ -1,2 +1,26 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
+
+.chat {
+    @include flex(column, nowrap);
+    flex: 1 0 auto;
+}
+
+.log {
+    flex: 1 0 auto;
+    overflow: auto;
+    background-color: $bg-tertiary;
+}
+
+.input {
+    @include flex(row, nowrap);
+    flex: 0 0 auto;
+}
+
+.text {
+    flex: 1 0 auto;
+}
+
+.sendBtn {
+    flex: 0 1 75px;
+}

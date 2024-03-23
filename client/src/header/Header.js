@@ -13,7 +13,7 @@ function Header() {
 
     return (
         <header>
-            <img alt="Logo" src="#"/>
+            <img className="headerLogo" alt="Logo" src="/gemini.png"/>
             <SearchBar />
             <Navigation links={links} />
         </header>

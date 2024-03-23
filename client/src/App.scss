@@ -1,2 +1,19 @@
 @import "./styles/variables";
 @import "./styles/mixins";
+
+body, html {
+    color: $color-text;
+}
+
+.container {
+    @include flex(row, nowrap);
+    height: 100vh;
+}
+
+input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: $bg-secondary;
+    color: $color-text;
+}
