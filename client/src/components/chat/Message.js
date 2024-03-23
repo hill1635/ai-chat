@@ -1,21 +1,11 @@
 import React from "react";
 import "./Chat.scss";
-import { useState, useEffect } from "react";
 
 function Message(props) {
-    const [ messenger, setMessenger ] = useState("");
-    
-    useEffect(() => {
-        if (props.message.user === "user") {
-            setMessenger("user");
-        } else {
-            setMessenger("other");
-        }
-    }, [ props ]);
-
     return(
-        <div>
-            <p className={messenger}>{props.message.text}</p>
+        <div className="messageWrapper" id={props.message.user}>
+            <span className="userName">{props.message.user}</span>
+            <span className="userMessage">{props.message.text}</span>
         </div>
     );
 }

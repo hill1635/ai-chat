@@ -7,9 +7,11 @@
 }
 
 .log {
+    @include flex(column, nowrap);
     flex: 1 0 auto;
     overflow: auto;
     background-color: $bg-tertiary;
+    padding: 25px;
 }
 
 .input {
@@ -23,4 +25,45 @@
 
 .sendBtn {
     flex: 0 1 75px;
+}
+
+.log #user {
+    @include align(end, start);
+}
+
+.messageWrapper {
+    @include flex(row, nowrap);
+    margin: 10px 0px;
+    gap: 10px;
+}
+
+.userName {
+    flex: 0 1 auto;
+    padding: 10px;
+    border: solid;
+    border-width: 1px;
+    border-color: $color-user;
+    border-radius: 25px;
+    width: 15px;
+    height: 15px;
+}
+
+.userMessage {
+    flex: 0 0 auto;
+    background-color: $bg-secondary;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+#user .userName {
+    order: 2;
+    border-color: $color-user;
+}
+
+#user .userMessage {
+    order: 1;
+}
+
+#ai .userName {
+    border-color: $color-ai;
 }
