@@ -7,6 +7,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 function Chat() {
     const [ messages, setMessages ] = useState([]);
     const [ userResponse, setUserResponse ] = useState("");
+    const [ aiResponse, setAiResponse ] = useState("");
 
     const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
@@ -16,14 +17,27 @@ function Chat() {
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = response.text();
-        console.log("response:", text);
-        // setMessages([...messages, { text: text, user: "ai", index: messages.length + 1 }]);
+        setAiResponse(text);
     }
 
     useEffect(() => {
-        // setMessages([...messages, { text: userResponse, user: "user", index: messages.length + 1 }]);
-        aiRun(userResponse);
+        if (userResponse !== "") {
+            setMessages([...messages, { text: userResponse, user: "user", index: messages.length + 1 }]);
+            console.log("userResponse:", userResponse);
+            aiRun(userResponse);
+        }
     }, [userResponse]);
+
+    useEffect(() => {
+        if (aiResponse !== "") {
+            setMessages([...messages, { text: aiResponse, user: "ai", index: messages.length + 1 }]);
+            console.log("aiResponse:", aiResponse);
+        }
+    }, [aiResponse]);
+
+    useEffect(() => {
+        console.log('messages:', messages);
+    }, [messages]);
 
     return(
         <div className="chat">
