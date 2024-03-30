@@ -27,7 +27,7 @@
     flex: 0 1 75px;
 }
 
-.log #user {
+.log #User {
     @include align(end, start);
 }
 
@@ -40,12 +40,6 @@
 .userName {
     flex: 0 1 auto;
     padding: 10px;
-    border: solid;
-    border-width: 1px;
-    border-color: $color-user;
-    border-radius: 25px;
-    width: 15px;
-    height: 15px;
 }
 
 .userMessage {
@@ -54,17 +48,25 @@
     padding: 10px 15px;
     border-radius: 20px;
     white-space: pre-wrap;
+    border: solid;
+    border-width: 1px;
+    border-radius: 25px;
 }
 
-#user .userName {
+#User .userName {
     order: 2;
     border-color: $color-user;
 }
 
-#user .userMessage {
+#User .userMessage {
     order: 1;
+    border-color: $color-user;
 }
 
-#ai .userName {
+#Gemini .userName {
+    border-color: $color-ai;
+}
+
+#Gemini .userMessage {
     border-color: $color-ai;
 }

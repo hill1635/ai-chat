@@ -32,14 +32,14 @@ function Chat() {
 
     useEffect(() => {
         if (userResponse !== "") {
-            setMessages([...messages, { text: userResponse, user: "user", index: messages.length + 1 }]);
+            setMessages([...messages, { text: userResponse, user: "User", index: messages.length + 1 }]);
             aiRun(userResponse);
         }
     }, [userResponse]);
 
     useEffect(() => {
         if (aiResponse !== "") {
-            setMessages([...messages, { text: aiResponse, user: "ai", index: messages.length + 1 }]);
+            setMessages([...messages, { text: aiResponse, user: "Gemini", index: messages.length + 1 }]);
         }
     }, [aiResponse]);
 
