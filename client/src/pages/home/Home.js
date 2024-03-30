@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import API from "../../utils/UserAPI";
 import "./Home.scss";
 import Chat from "../../components/chat/Chat";
+import Tabs from "../../components/tabs/Tabs";
 
 function Home(props) {
 
@@ -11,6 +12,7 @@ function Home(props) {
 
   return (
     <main className="home">
+        <Tabs />
         <Chat />
     </main>
   );
