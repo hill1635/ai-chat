@@ -4,10 +4,10 @@ function Tabs() {
     var tabs = ["Tab 1", "Tab 2"];
 
     return(
-        <div>
+        <div className="tabs">
             {tabs.map(tab => {
-                <h1>{tab}</h1>
-            })};
+                return <span className="tab">{tab}</span>
+            })}
         </div>
     );
 }
