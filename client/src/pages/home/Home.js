@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import API from "../../utils/UserAPI";
+import React, { useEffect } from "react";
 import "./Home.scss";
 import Chat from "../../components/chat/Chat";
 
