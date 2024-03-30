@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import Log from "./Log";
+import Tabs from "../tabs/Tabs";
+
 import "./Chat.scss";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 function Chat() {
+    // * chat = { id: Integer, title: String, messages: Array }
+    const [ chats, setChats ] = useState([]);
+    const [ activeChat, setActiveChat ] = useState({});
     const [ messages, setMessages ] = useState([]);
     const [ userResponse, setUserResponse ] = useState("");
     const [ aiResponse, setAiResponse ] = useState("");
@@ -48,6 +53,7 @@ function Chat() {
 
     return(
         <div className="chat">
+            <Tabs />
             <Log messages={messages}/>
             <Input setUserResponse={setUserResponse}/>
         </div>
