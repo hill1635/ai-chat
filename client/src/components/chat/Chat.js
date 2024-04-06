@@ -17,7 +17,6 @@ function Chat() {
     const sendMessage = async (input) => {
         const msg = input;
         await chat.sendMessage(msg);
-        console.log("chat:", chat);
         setActiveChat(chat._history);
     }
 
