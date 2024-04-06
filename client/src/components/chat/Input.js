@@ -3,7 +3,7 @@ import React from "react";
 function Input(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.setUserResponse(e.target.previousSibling.value);
+        props.sendMessage(e.target.previousSibling.value);
         e.target.previousSibling.value = "";
     }
 
