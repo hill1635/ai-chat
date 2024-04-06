@@ -5,7 +5,7 @@ function Log(props) {
 
     return(
         <div className="log">
-            {props.messages.map((message) => {
+            {props.activeChat.map((message) => {
                 return <Message key={message.index} message={message} />
             })}
         </div>
