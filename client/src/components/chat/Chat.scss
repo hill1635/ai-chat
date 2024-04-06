@@ -27,7 +27,7 @@
     flex: 0 1 75px;
 }
 
-.log #User {
+.log #user {
     @include align(end, start);
 }
 
@@ -53,20 +53,20 @@
     border-radius: 25px;
 }
 
-#User .userName {
+#user .userName {
     order: 2;
     border-color: $color-user;
 }
 
-#User .userMessage {
+#user .userMessage {
     order: 1;
     border-color: $color-user;
 }
 
-#Gemini .userName {
+#model .userName {
     border-color: $color-ai;
 }
 
-#Gemini .userMessage {
+#model .userMessage {
     border-color: $color-ai;
 }
