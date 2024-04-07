@@ -14,7 +14,7 @@ function Navigation(props) {
   return (
     <nav className="nav" role="navigation">
       {links.map((link) => (
-        <a href={link.href}>{link.name}</a>
+        <a href={link.href} key={links.indexOf(link)}>{link.name}</a>
       ))}
     </nav>
   );
