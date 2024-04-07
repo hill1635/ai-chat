@@ -14,7 +14,9 @@ function Chat() {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     const chat = model.startChat({ history: activeChat });
 
+
     const sendMessage = async (input) => {
+        setActiveChat([...activeChat, { role: "user", parts: [{ text: input }] }]);
         const msg = input;
         await chat.sendMessage(msg);
         setActiveChat(chat._history);
