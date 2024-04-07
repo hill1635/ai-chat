@@ -3,20 +3,20 @@
 
 .chat {
     @include flex(column, nowrap);
-    flex: 1 0 auto;
+    height: 100vh; // Make .chat always 100vh
 }
 
 .log {
     @include flex(column, nowrap);
-    flex: 1 0 auto;
     overflow: auto;
     background-color: $bg-tertiary;
     padding: 25px;
+    flex-grow: 1; // Make .log grow to take up the remaining space
 }
 
 .input {
     @include flex(row, nowrap);
-    flex: 0 0 auto;
+    flex-shrink: 0; // Prevent .input from shrinking
 }
 
 .text {
