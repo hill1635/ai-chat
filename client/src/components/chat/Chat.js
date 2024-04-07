@@ -30,17 +30,8 @@ function Chat() {
         }));
     };
 
-    const getLog = () => {
-        if (activeChat.log === undefined) {
-            return [];
-        } else {
-            return activeChat.log;
-        }
-    };
-
     const sendMessage = async (input) => {
-        var prevLog = getLog();
-        updateLog([...prevLog, { role: "user", parts: [{ text: input }] }]);
+        updateLog([...activeChat.log, { role: "user", parts: [{ text: input }] }]);
         getResponse(input);
     };
 
