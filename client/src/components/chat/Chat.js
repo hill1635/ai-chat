@@ -7,6 +7,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 function Chat() {
     // * chat = { id: Integer, title: String, log: Array }
+    const [ id, setId ] = useState(0);
     const [ chats, setChats ] = useState([]);
     const [ activeChat, setActiveChat ] = useState([]);
 
