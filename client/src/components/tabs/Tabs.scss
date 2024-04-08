@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.tabs {
+    @include flex(row, wrap);
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0px;
+    background-color: $bg-primary;
+}
+
+.tab {
+    background-color: $bg-tertiary;
+    padding: 15px;
+    flex: 0 1 auto;
+}
