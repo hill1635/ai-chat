@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import Log from "./Log";
 import Tabs from "../tabs/Tabs";
@@ -21,6 +21,7 @@ function Chat() {
             log: []
         });
         setId(id + 1);
+        setChats([...chats, { id: id, title: "Untitled" }]);
     };
 
     const updateLog = (log) => {
