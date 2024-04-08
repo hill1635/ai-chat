@@ -1,4 +1,5 @@
 import React from "react";
+import Add from "../buttons/Add";
 import "./Tabs.scss";
 
 function Tabs(props) {
@@ -14,7 +15,7 @@ function Tabs(props) {
                 {props.tabs.map(tab => {
                     return <li className="tab" key={tab.id} data-id={tab.id} onClick={e => select(e)}>{tab.title}</li>
                 })}
-                <li className="tab new" onClick={props.new}>+</li>
+                <Add add={props.new} />
             </ul>
         </nav>
     );
