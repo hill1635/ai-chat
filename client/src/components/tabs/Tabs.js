@@ -1,13 +1,13 @@
 import React from "react";
 
-function Tabs() {
-    var tabs = ["Tab 1", "Tab 2"];
+function Tabs(props) {
 
     return(
         <div className="tabs">
-            {tabs.map(tab => {
-                return <span className="tab">{tab}</span>
+            {props.tabs.map(tab => {
+                return <span className="tab" key={tab.id}>{tab.title}</span>
             })}
+            <span className="tab new" onClick={props.new}>+</span>
         </div>
     );
 }

@@ -48,7 +48,7 @@ function Chat() {
 
     return(
         <div className="chat">
-            <Tabs />
+            <Tabs tabs={chats} setActive={setActiveChat} new={initChat}/>
             <Log chatLog={activeChat.log} />
             <Input sendMessage={sendMessage}/>
         </div>
