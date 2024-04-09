@@ -19,11 +19,11 @@ function App() {
   useEffect(() => {
     API.checkSession()
     .then((res) => {
-      console.log("res.data: ", res);
-      // if (res.data[0] !== undefined) {
-      //   setUser(res.data[0]);
-      //   setLoggedIn(true);
-      // }
+      var session = res.data.session;
+      if (session.loggedIn) {
+        setUser(session.userId);
+        setLoggedIn(true);
+      }
     })
     .catch((err) => { console.log(err) });
   }, []);
