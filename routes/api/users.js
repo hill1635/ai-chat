@@ -14,6 +14,10 @@ router
     .post(userController.login);
 
 router
+    .route("/login")
+    .get(userController.checkSession);
+
+router
     .route("/logout")
     .post(userController.logout);
     

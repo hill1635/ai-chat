@@ -5,11 +5,14 @@ import API from "../../utils/API";
 
 function Login() {
   var startSession = () => {
+    var email = document.querySelector("#loginUser").value;
+    var password = document.querySelector("#loginPassword").value;
     API.login({
-        email: document.querySelector("#loginUser").value,
-        password: document.querySelector("#loginPassword").value
+        email: email,
+        password: password
     })
-    .then(() => window.location.href="/");
+    .then(() => window.location.href="/")
+    .catch((err) => console.log(err));
   };
 
   return (
