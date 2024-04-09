@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.scss";
 import LoginBtn from "../../components/buttons/Login";
-import API from "../../utils/UserAPI";
+import API from "../../utils/API";
 
 function Login() {
   var startSession = () => {

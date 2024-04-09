@@ -7,7 +7,7 @@ import SignUp from "./pages/signup/SignUp";
 import Account from "./pages/account/Account";
 import About from "./pages/about/About";
 import Footer from "./footer/Footer";
-import API from "./utils/UserAPI";
+import API from "./utils/API";
 
 import "./App.scss";
 import "./components/buttons/Buttons.scss";
