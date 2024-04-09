@@ -3,7 +3,7 @@ import "./Header.scss";
 import Navigation from "../components/navigation/Navigation";
 import SearchBar from "../components/search/SearchBar";
 
-function Header() {
+function Header(props) {
     const links = [
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
@@ -15,7 +15,7 @@ function Header() {
         <header>
             <img className="headerLogo" alt="Logo" src="/gemini.png"/>
             <SearchBar />
-            <Navigation links={links} />
+            <Navigation links={links} logout={props.logout}/>
         </header>
     );
 }

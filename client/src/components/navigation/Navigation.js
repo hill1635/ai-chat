@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import Logout from "../buttons/Logout";
 import "./Navigation.scss";
+import Log from "../chat/Log";
 
 function Navigation(props) {
   const [ links, setLinks ] = useState([]);
@@ -16,6 +18,7 @@ function Navigation(props) {
       {links.map((link) => (
         <a href={link.href} key={links.indexOf(link)}>{link.name}</a>
       ))}
+      <Logout logout={props.logout}/>
     </nav>
   );
 }

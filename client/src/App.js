@@ -14,7 +14,7 @@ import "./components/buttons/Buttons.scss";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     API.checkSession()
@@ -28,10 +28,20 @@ function App() {
     .catch((err) => { console.log(err) });
   }, []);
 
+  const logout = () => {
+    API.logout()
+      .then(() => { 
+        setLoggedIn(false);
+        setUser("");
+      })
+      .then(() => { window.location.replace("/login") })
+      .catch((err) => { console.log(err) });
+  };
+
   return (
     <Router>
       <div className="container">
-        <Header loggedIn={loggedIn} />
+        <Header loggedIn={loggedIn} logout={logout}/>
         <Routes>
           <Route exact path="/" element={<Home user={user} />} />
           <Route exact path="/login" element={<Login />} />
