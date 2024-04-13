@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./header/Header";
+import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/signup/SignUp";
 import Account from "./pages/account/Account";
 import About from "./pages/about/About";
-import Footer from "./footer/Footer";
+import Footer from "./components/footer/Footer";
 import UserAPI from "./utils/UserAPI";
 
 import "./App.scss";

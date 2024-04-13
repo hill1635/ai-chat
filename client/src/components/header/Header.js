@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.scss";
-import Navigation from "../components/navigation/Navigation";
-import SearchBar from "../components/search/SearchBar";
+import Navigation from "../navigation/Navigation";
+import SearchBar from "../search/SearchBar";
 
 function Header(props) {
     const links = [
