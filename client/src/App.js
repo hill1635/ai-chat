@@ -7,7 +7,7 @@ import SignUp from "./pages/signup/SignUp";
 import Account from "./pages/account/Account";
 import About from "./pages/about/About";
 import Footer from "./footer/Footer";
-import API from "./utils/API";
+import UserAPI from "./utils/UserAPI";
 
 import "./App.scss";
 import "./components/buttons/Buttons.scss";
@@ -17,7 +17,7 @@ function App() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    API.checkSession()
+    UserAPI.checkSession()
     .then((res) => {
       var session = res.data.session;
       if (session.loggedIn) {
@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   const logout = () => {
-    API.logout()
+    UserAPI.logout()
       .then(() => { 
         setLoggedIn(false);
         setUser("");

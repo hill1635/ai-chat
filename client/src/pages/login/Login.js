@@ -1,13 +1,13 @@
 import React from "react";
 import "./Login.scss";
 import LoginBtn from "../../components/buttons/Login";
-import API from "../../utils/API";
+import UserAPI from "../../utils/UserAPI";
 
 function Login() {
   var startSession = () => {
     var email = document.querySelector("#loginUser").value;
     var password = document.querySelector("#loginPassword").value;
-    API.login({
+    UserAPI.login({
         email: email,
         password: password
     })

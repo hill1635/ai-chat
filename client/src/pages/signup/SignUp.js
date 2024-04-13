@@ -1,13 +1,13 @@
 import React from "react";
 import "./SignUp.scss";
 import SignupBtn from "../../components/buttons/SignUp";
-import API from "../../utils/API";
+import UserAPI from "../../utils/UserAPI";
 
 function SignUp() {
   var createAccount = () => {
     var email = document.querySelector("#userInput").value;
     var password = document.querySelector("#passwordInput").value;
-    API.create({
+    UserAPI.create({
       email: email,
       password: password
     }).then(() => {
