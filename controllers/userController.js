@@ -48,6 +48,9 @@ module.exports = {
       res.status(404).end();
     }
   },
-  // Get recents
-  // Save Recent
+  update: function (req, res) {
+    db.findByIdAndUpdate(req.session.userId, req.body)
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  }
 };
