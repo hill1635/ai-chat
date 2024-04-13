@@ -16,4 +16,7 @@ export default {
     checkSession: function() {
         return axios.get("/api/users/login");
     },
+    update: function(id, userData) {
+        return axios.put("/api/users/" + id, userData);
+    }
 };
