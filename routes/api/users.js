@@ -21,6 +21,8 @@ router
     .route("/logout")
     .post(userController.logout);
 
-    // Need routes for get/set recent, /:id/recents
+ router
+    .route("/:id")
+    .put(userController.update);
     
 module.exports = router;
