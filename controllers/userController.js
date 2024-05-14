@@ -52,5 +52,10 @@ module.exports = {
     db.findByIdAndUpdate(req.session.userId, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
-  }
+  },
+  get: function (req, res) {
+    db.findById(req.session.userId)
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
 };

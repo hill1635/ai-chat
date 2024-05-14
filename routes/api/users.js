@@ -24,5 +24,9 @@ router
  router
     .route("/:id")
     .put(userController.update);
+
+router
+    .route("/:id")
+    .get(userController.get);
     
 module.exports = router;

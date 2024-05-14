@@ -3,6 +3,7 @@ import Input from "./Input";
 import Log from "./Log";
 import Tabs from "../tabs/Tabs";
 import Save from "../buttons/Save";
+import UserAPI from "../../utils/UserAPI";
 import "./Chat.scss";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -19,6 +20,19 @@ function Chat(props) {
         recents: activeChat,
     };
 
+    useEffect(() => {
+        if (props.user) {
+            UserAPI.get(props.user)
+                .then((res) => {
+                    var recentChats = res.data.recents;
+                    var latestChat = recentChats[recentChats.length - 1];
+                    setActiveChat(latestChat);
+                    updateChats(latestChat);
+                })
+                .catch((err) => { console.log(err) });
+        }
+    }, [ props.user ]);
+
     const initChat = () => {
         setActiveChat({
             id: id,
@@ -29,11 +43,17 @@ function Chat(props) {
         setChats([...chats, { id: id, title: "Untitled" }]);
     };
 
+    const updateChats = (chat) => {
+        var chatIndex = chats.findIndex(c => c.id === chat.id);
+        var newArray = [...chats];
+        newArray[chatIndex] = chat;
+        setChats(newArray);
+    };
+
     const updateLog = (log) => {
-        setActiveChat(prevChat => ({
-            ...prevChat,
-            log: log
-        }));
+        var newChat = { ...activeChat, log: log };
+        setActiveChat(newChat);
+        updateChats(newChat);
     };
 
     const sendMessage = async (input) => {
