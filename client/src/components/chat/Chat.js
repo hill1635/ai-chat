@@ -67,6 +67,13 @@ function Chat(props) {
         updateLog(chat._history);
     };
 
+    const saveChat = () => {
+        UserAPI.update(props.user, data)
+            .catch((err) => {
+                console.log('err', err);
+            });
+    }
+
     if (Object.keys(activeChat).length === 0) {
         initChat();
     }
@@ -74,7 +81,7 @@ function Chat(props) {
     return(
         <div className="chat">
             <Tabs tabs={chats} setActive={setActiveChat} new={initChat}/>
-            <Save user={props.user} data={data}/>
+            <Save save={saveChat}/>
             <Log chatLog={activeChat.log} />
             <Input sendMessage={sendMessage}/>
         </div>
