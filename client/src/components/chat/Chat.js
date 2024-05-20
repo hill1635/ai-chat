@@ -33,14 +33,27 @@ function Chat(props) {
         }
     }, [ props.user ]);
 
+    useEffect(() => {
+        saveChats();
+    }, [ chats ]);
+
+
+    const saveChats = (chat) => {
+        UserAPI.update(props.user, { recents: chats })
+            .catch((err) => {
+                console.log('err', err);
+            });
+    }
+
     const initChat = () => {
-        setActiveChat({
+        const newChat = {
             id: id,
             title: "Untitled",
             log: []
-        });
+        };
+        setActiveChat(newChat);
         setId(id + 1);
-        setChats([...chats, { id: id, title: "Untitled" }]);
+        setChats([...chats, newChat]);
     };
 
     const updateChats = (chat) => {
@@ -67,13 +80,6 @@ function Chat(props) {
         updateLog(chat._history);
     };
 
-    const saveChat = () => {
-        UserAPI.update(props.user, data)
-            .catch((err) => {
-                console.log('err', err);
-            });
-    }
-
     if (Object.keys(activeChat).length === 0) {
         initChat();
     }
@@ -81,7 +87,7 @@ function Chat(props) {
     return(
         <div className="chat">
             <Tabs tabs={chats} setActive={setActiveChat} new={initChat}/>
-            <Save save={saveChat}/>
+            <Save save={saveChats}/>
             <Log chatLog={activeChat.log} />
             <Input sendMessage={sendMessage}/>
         </div>
