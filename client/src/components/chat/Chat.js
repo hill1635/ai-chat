@@ -12,39 +12,6 @@ function Chat(props) {
     const [ chats, setChats ] = useState([]);
     const [ activeChat, setActiveChat ] = useState({});
 
-    const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const chat = model.startChat({ history: activeChat.log });
-
-    var data = {
-        recents: activeChat,
-    };
-
-    useEffect(() => {
-        if (props.user) {
-            UserAPI.get(props.user)
-                .then((res) => {
-                    var recentChats = res.data.recents;
-                    var latestChat = recentChats[recentChats.length - 1];
-                    setActiveChat(latestChat);
-                    updateChats(latestChat);
-                })
-                .catch((err) => { console.log(err) });
-        }
-    }, [ props.user ]);
-
-    useEffect(() => {
-        saveChats();
-    }, [ chats ]);
-
-
-    const saveChats = (chat) => {
-        UserAPI.update(props.user, { recents: chats })
-            .catch((err) => {
-                console.log('err', err);
-            });
-    }
-
     const initChat = () => {
         const newChat = {
             id: id,
@@ -55,6 +22,42 @@ function Chat(props) {
         setId(id + 1);
         setChats([...chats, newChat]);
     };
+
+    if (Object.keys(activeChat).length === 0) {
+        initChat();
+    }
+
+    const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const chat = model.startChat({ history: activeChat.log });
+
+    const initChats = (userData) => {
+        UserAPI.get(userData)
+        .then((res) => {
+            var recentChats = res.data.recents;
+            var latestChat = recentChats[recentChats.length - 1];
+            setActiveChat(latestChat);
+            updateChats(latestChat);
+        })
+        .catch((err) => { console.log(err) });
+    };
+
+    useEffect(() => {
+        if (props.user) {
+            initChats(props.user);
+        }
+    }, [ props.user ]);
+    
+    const saveChats = (chat) => {
+        UserAPI.update(props.user, { recents: chats })
+        .catch((err) => {
+            console.log('err', err);
+        });
+    }
+    
+    useEffect(() => {
+        saveChats();
+    }, [ chats ]);
 
     const updateChats = (chat) => {
         var chatIndex = chats.findIndex(c => c.id === chat.id);
@@ -68,21 +71,17 @@ function Chat(props) {
         setActiveChat(newChat);
         updateChats(newChat);
     };
-
-    const sendMessage = async (input) => {
-        updateLog([...activeChat.log, { role: "user", parts: [{ text: input }] }]);
-        getResponse(input);
-    };
-
+    
     const getResponse = async (input) => {
         const msg = input;
         await chat.sendMessage(msg);
         updateLog(chat._history);
     };
 
-    if (Object.keys(activeChat).length === 0) {
-        initChat();
-    }
+    const sendMessage = async (input) => {
+        updateLog([...activeChat.log, { role: "user", parts: [{ text: input }] }]);
+        getResponse(input);
+    };
 
     return(
         <div className="chat">
