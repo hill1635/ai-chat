@@ -11,6 +11,13 @@ function Chat(props) {
     const [ id, setId ] = useState(0);
     const [ chats, setChats ] = useState([]);
     const [ activeChat, setActiveChat ] = useState({});
+    const [ context, setContext ] = useState({});
+
+    useEffect(() => {
+        if (activeChat) {
+            setContext({history: activeChat.log});
+        }
+    }, [ activeChat ]);
 
     const initChat = () => {
         const newChat = {
@@ -23,13 +30,13 @@ function Chat(props) {
         setChats([...chats, newChat]);
     };
 
-    if (Object.keys(activeChat).length === 0) {
+    if (activeChat === null) {
         initChat();
     }
 
     const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const chat = model.startChat({ history: activeChat.log });
+    const chat = model.startChat(context);
 
     const initChats = (userData) => {
         UserAPI.get(userData)
@@ -87,7 +94,7 @@ function Chat(props) {
         <div className="chat">
             <Tabs tabs={chats} setActive={setActiveChat} new={initChat}/>
             <Save save={saveChats}/>
-            <Log chatLog={activeChat.log} />
+            <Log chatLog={context.history} />
             <Input sendMessage={sendMessage}/>
         </div>
     );
