@@ -86,7 +86,11 @@ function Chat(props) {
     };
 
     const sendMessage = async (input) => {
-        updateLog([...activeChat.log, { role: "user", parts: [{ text: input }] }]);
+        if (activeChat.log) {
+            updateLog([...activeChat.log, { role: "user", parts: [{ text: input }] }]);
+        } else {
+            updateLog([{ role: "user", parts: [{ text: input }] }]);
+        }
         getResponse(input);
     };
 
