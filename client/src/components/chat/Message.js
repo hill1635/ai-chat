@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { parse } from "marked";
 import "./Chat.scss";
 
 function Message(props) {
@@ -12,10 +13,10 @@ function Message(props) {
     }, [ props.message ]);
 
     return(
-        message &&
-            <div className="messageWrapper" id={props.message.role}>
-                <span className="userName">{props.message.role}</span>
-                <span className="userMessage">{props.message.parts[0].text}</span>
+        message.parts &&
+            <div className="messageWrapper" id={message.role}>
+                <span className="userName">{message.role}</span>
+                <span className="userMessage" dangerouslySetInnerHTML={{ __html: parse(message.parts[0].text) }}></span>
             </div>
     );
 }
