@@ -8,7 +8,9 @@ function Message(props) {
 
     useEffect(() => {
         if (props.message) {
-            setMessage(props.message);
+            var newObj = props.message;
+            newObj.parts[0].text = parse(props.message.parts[0].text);
+            setMessage(newObj);
         }
     }, [ props.message ]);
 
@@ -16,7 +18,7 @@ function Message(props) {
         message.parts &&
             <div className="messageWrapper" id={message.role}>
                 <span className="userName">{message.role}</span>
-                <span className="userMessage" dangerouslySetInnerHTML={{ __html: parse(message.parts[0].text) }}></span>
+                <span className="userMessage" dangerouslySetInnerHTML={{ __html: message.parts[0].text }}></span>
             </div>
     );
 }
