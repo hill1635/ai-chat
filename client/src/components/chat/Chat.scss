@@ -70,3 +70,12 @@
 #model .userMessage {
     border-color: $color-ai;
 }
+
+p, h1, h2, h3, h4, h5, h6, ul, li {
+    margin: 0px;
+}
+.userMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
