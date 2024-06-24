@@ -11,10 +11,11 @@ function Chat(props) {
     const [ id, setId ] = useState(0);
     const [ chats, setChats ] = useState([]);
     const [ activeChat, setActiveChat ] = useState({});
-    const [ context, setContext ] = useState({});
+    var formatContext = "Use proper HTML structure for CommonMark syntax, wrapping headers with related content. Only use headers when necessary for organization.  Informal responses should just be paragraphs.";
+    const [ context, setContext ] = useState({history: [{ role: "user", parts: [{ text: formatContext }] }]});
 
     useEffect(() => {
-        if (activeChat) {
+        if (activeChat.log) {
             setContext({history: activeChat.log});
         }
     }, [ activeChat ]);
@@ -23,7 +24,8 @@ function Chat(props) {
         const newChat = {
             id: id,
             title: "Untitled",
-            log: []
+            log: [{ role: "user", parts: [{ text: formatContext }] }],
+            history: [{ role: "user", parts: [{ text: formatContext }] }]
         };
         setActiveChat(newChat);
         setId(id + 1);
